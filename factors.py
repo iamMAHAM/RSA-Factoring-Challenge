@@ -7,7 +7,7 @@ def factors(n):
             pass
         else:
             if (n % i == 0):
-                return "{}={:d}*{}".format(n, (n // i), i)
+                return "{}={:d}*{}".format(n, (n / i), i)
         i += 1
 
     return "{}={}*1".format(n, n)
