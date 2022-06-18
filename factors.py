@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-#coding:utf-8
-import sys
-
 def factors(n):
     i = 0
     n = int(n)
@@ -16,8 +13,8 @@ def factors(n):
     return "{}={}*1".format(n, n)
 
 
-
 if __name__ == "__main__":
+    import sys
     try:
         if (len(sys.argv) != 2):
             print("Usage: factors <file>")
