@@ -7,10 +7,10 @@ def factors(n):
             pass
         else:
             if (n % i == 0):
-                return "{}={:d}*{}".format(n, (n / i), i)
+                return "{}={:d}*{}".format(n, int((n / i)), i)
         i += 1
 
-    return "{}={}*1".format(n, n)
+    return "{:d}={:d}*1".format(n, n)
 
 
 if __name__ == "__main__":
@@ -24,5 +24,8 @@ if __name__ == "__main__":
             for line in f:
                 print(factors(line))
 
+    except FileNotFoundError:
+        print("Error can't open {} : File does not exist".format(sys.argv[1]))
+    
     except Exception as e:
-        print("Error can't open ", sys.argv[1], e)
+        print("Exception: {e}".format(e))
