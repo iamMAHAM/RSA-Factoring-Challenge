@@ -12,7 +12,6 @@ def factors(n):
 
     return "{:d}={:d}*1".format(n, n)
 
-
 if __name__ == "__main__":
     import sys
     try:
@@ -22,7 +21,7 @@ if __name__ == "__main__":
         with open(sys.argv[1], "r") as f:
             f = f.read().splitlines()
             for line in f:
-                print(factors(line))
+                print(factors(line)) if len(line) > 0 else 0
 
     except FileNotFoundError:
         print("Error can't open {} : File does not exist".format(sys.argv[1]))
