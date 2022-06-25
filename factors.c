@@ -9,7 +9,7 @@
  */
 char *factors(const char *n)
 {
-	int i = 0;
+	int i = 3;
 	char *buffer;
 	unsigned long int v = atol(n);
 
@@ -27,13 +27,13 @@ char *factors(const char *n)
 		{
 			if (v % i == 0)
 			{
-				sprintf(buffer, "%ld=%ld*%d", v, (v / i), i);
+				sprintf(buffer, "%lu=%lu*%d", v, (v / i), i);
 				return (buffer);
 			}
 		}
 		i += 1;
 	}
-	sprintf(buffer, "%ld=%ld*1", v, v);
+	sprintf(buffer, "%lu=%lu*%d", v, v, 1);
 	return (buffer);
 }
 
