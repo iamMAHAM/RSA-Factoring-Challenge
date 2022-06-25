@@ -37,6 +37,7 @@ char *factors(const char *n)
 	return (buffer);
 }
 
+
 /**
  * main - An Entry Point
  * @argc: the arg count
@@ -62,12 +63,14 @@ int main(int argc, char *argv[])
 	{
 		while (fgets(line, 1000, fd))
 		{
-		f = factors(line);
-		res = strdup(f);
-		printf("%s\n", res);
-		free(res);
-		free(f);
-
+			if (atol(line) != 0)
+			{
+				f = factors(line);
+				res = strdup(f);
+				printf("%s\n", res);
+				free(res);
+				free(f);
+			}
 		}
 		fclose(fd);
 		return (0);
