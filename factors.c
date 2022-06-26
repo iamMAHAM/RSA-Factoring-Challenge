@@ -8,28 +8,22 @@
  * @n: the integer
  * Return: a factorized number
  */
-int *factors(const char *n)
+void factors(unsigned long long n)
 {
-	int i = 3;
-	unsigned long int v = atol(n);
-	int tri = ceil(sqrt(v));
+	int i;
+	unsigned long long inter = n;
 
-	if ((v % 2) == 0)
+	for (i  = 2; i <= n; i++)
 	{
-		printf("%lu=%lu*%d\n", v, (v / 2), 2);
-		return (0);
-	}
-
-	while (i <= tri)
-	{
-		if (v % i == 0)
+		if (n % i == 0)
 		{
-			printf("%lu=%lu*%d\n", v, (v / i), i);
-			return (0);
+			n = n / i;
+			printf("%lld=%lld*%d\n", inter, n, i);
+			i--;
+			return;
 		}
-		i += 2;
 	}
-	printf("%lu=%lu*%d\n", v, v, 1);
+	printf("%lld=%lld*%d\n", inter, inter, 1);
 }
 
 /**
@@ -51,7 +45,7 @@ int main(int argc, char *argv[])
 		{
 			if (atol(line) != 0)
 			{
-				factors(line);
+				factors(atol(line));
 			}
 		}
 		fclose(fd);
