@@ -19,7 +19,7 @@ int *factors(const char *n)
 		printf("%lu=%lu*%d\n", v, (v / 2), 2);
 		return (0);
 	}
-	
+
 	while (i <= tri)
 	{
 		if (v % i == 0)
