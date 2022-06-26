@@ -43,12 +43,6 @@ int main(int argc, char *argv[])
 	FILE *fd;
 	signed char line[1000];
 
-	if (argc != 2)
-	{
-		printf("Usage: factors <file>\n");
-		exit(-1);
-	}
-
 	fd = fopen(argv[1], "r");
 
 	if (fd)
