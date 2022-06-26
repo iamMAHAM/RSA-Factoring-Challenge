@@ -9,7 +9,7 @@
  */
 char *factors(const char *n)
 {
-	int i = 0;
+	int i = 3;
 	char *buffer;
 	unsigned long int v = atol(n);
 
@@ -27,15 +27,16 @@ char *factors(const char *n)
 		{
 			if (v % i == 0)
 			{
-				sprintf(buffer, "%ld=%ld*%d", v, (v / i), i);
+				sprintf(buffer, "%lu=%lu*%d", v, (v / i), i);
 				return (buffer);
 			}
 		}
 		i += 1;
 	}
-	sprintf(buffer, "%ld=%ld*1", v, v);
+	sprintf(buffer, "%lu=%lu*%d", v, v, 1);
 	return (buffer);
 }
+
 
 /**
  * main - An Entry Point
@@ -62,12 +63,14 @@ int main(int argc, char *argv[])
 	{
 		while (fgets(line, 1000, fd))
 		{
-		f = factors(line);
-		res = strdup(f);
-		printf("%s\n", res);
-		free(res);
-		free(f);
-
+			if (atol(line) != 0)
+			{
+				f = factors(line);
+				res = strdup(f);
+				printf("%s\n", res);
+				free(res);
+				free(f);
+			}
 		}
 		fclose(fd);
 		return (0);
