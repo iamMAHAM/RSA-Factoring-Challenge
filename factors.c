@@ -1,42 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 /**
  * factors - Factorize as many numbers as possible
  * @n: the integer
  * Return: a factorized number
  */
-char *factors(const char *n)
+int *factors(const char *n)
 {
 	int i = 3;
-	char *buffer;
 	unsigned long int v = atol(n);
+	int tri = ceil(sqrt(v));
 
-	buffer = malloc(sizeof(char) * 100000);
-	if (!buffer)
+	if ((v % 2) == 0)
 	{
-		return (NULL);
+		printf("%lu=%lu*%d\n", v, (v / 2), 2);
+		return (0);
 	}
-
-	while (i < v)
+	
+	while (i <= tri)
 	{
-		if (i == 0 || i == 1)
-		{}
-		else
+		if (v % i == 0)
 		{
-			if (v % i == 0)
-			{
-				sprintf(buffer, "%lu=%lu*%d", v, (v / i), i);
-				return (buffer);
-			}
+			printf("%lu=%lu*%d\n", v, (v / i), i);
+			return (0);
 		}
-		i += 1;
+		i += 2;
 	}
-	sprintf(buffer, "%lu=%lu*%d", v, v, 1);
-	return (buffer);
+	printf("%lu=%lu*%d\n", v, v, 1);
 }
-
 
 /**
  * main - An Entry Point
@@ -48,8 +42,6 @@ int main(int argc, char *argv[])
 {
 	FILE *fd;
 	signed char line[1000];
-	char *res  = NULL;
-	char *f;
 
 	if (argc != 2)
 	{
@@ -65,11 +57,7 @@ int main(int argc, char *argv[])
 		{
 			if (atol(line) != 0)
 			{
-				f = factors(line);
-				res = strdup(f);
-				printf("%s\n", res);
-				free(res);
-				free(f);
+				factors(line);
 			}
 		}
 		fclose(fd);
